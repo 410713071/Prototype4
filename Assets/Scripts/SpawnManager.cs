@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject enemyPrefab;//建立enemy prefab變數
     private float spawnRange = 9;//將void Start裡重複的9改成不被更改的變數
-
+    public int enemyCount;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,11 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        enemyCount = FindObjectsOfType<Enemy>().Length;
+        if (enemyCount == 0)
+        {
+            SpawnEnemyWave(1);
+        }
     }
 
 
