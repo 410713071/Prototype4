@@ -8,11 +8,14 @@ public class SpawnManager : MonoBehaviour
     private float spawnRange = 9;//將void Start裡重複的9改成不被更改的變數
     public int enemyCount;
     public int waveNumber = 1;
+    public GameObject powerupPrefab;
     // Start is called before the first frame update
     void Start()
     {
         Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
         SpawnEnemyWave(waveNumber);
+        Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+
     }
 
     // Update is called once per frame
@@ -22,8 +25,10 @@ public class SpawnManager : MonoBehaviour
         if (enemyCount == 0)
         {
             waveNumber++;
-            SpawnEnemyWave(waveNumber);
+            SpawnEnemyWave(1);
+            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
         }
+    }
 
 
     private Vector3 GenerateSpawnPosition()
