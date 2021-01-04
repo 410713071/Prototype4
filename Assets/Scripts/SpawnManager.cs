@@ -11,7 +11,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
-
+        SpawnEnemyWave();
     }
 
     // Update is called once per frame
@@ -30,7 +30,13 @@ public class SpawnManager : MonoBehaviour
         return randomPos;
     }
 
-
+    void SpawnEnemyWave()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+        }
+    }
 
 
 
